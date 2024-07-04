@@ -1,0 +1,76 @@
+site_name: Offline Manual
+theme:
+  name: material
+  language: ko
+  features:
+    - content.code.copy
+    - navigation.top
+    - toc.integrate
+    - search.highlight
+    
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  # offline 환경에서 font.googleapis.com 에서 폰트를 가져오지 못하는 문제를 해결하기 위해 아래와 같이 설정
+  font: false
+    
+# 폐쇄망 환경에서 diagram을 사용하기 위해 아래와 같이 설정
+# 2024-07-04 : mkdocs build 후 라이브서버가 아닌, index.html 을 직접 파일에서 열것.
+
+extra_javascript:
+  - 'js/mermaid.min.js'
+
+extra:
+  polyfills:
+    - 'js/iframe-worker.js'
+
+markdown_extensions:
+
+  # MERMAID
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # PYMDOWNX CRITIC
+  - pymdownx.critic
+
+  # PYMDOWNX TASKLIST
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # PYMDOWNX HIGHLIGHT
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+  # Admonition
+  - admonition
+  - pymdownx.details
+  # - pymdownx.superfences
+
+  # pymdownx.emoji
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - offline
+  - search
+  - glightbox
