@@ -1,5 +1,7 @@
 # 오프라인 매뉴얼을 위한 Material for MkDocs 설정
 
+프로젝트마다 새로 설정파일 만들어주는게 귀찮아서 만들었습니다.
+
 ## 필요 설치 패키지
 ```shell
 pip install mkdocs-material
